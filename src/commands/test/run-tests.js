@@ -6,7 +6,7 @@ const groupBy = require('ramda/src/groupBy');
 const toPairs = require('ramda/src/toPairs');
 const fromPairs = require('ramda/src/fromPairs');
 const mapObjIndexed = require('ramda/src/mapObjIndexed');
-const { die } = require('../../console');
+const { die } = require('../../utils/console');
 const {
   createChromeAppTarget,
   createChromeDockerTarget,

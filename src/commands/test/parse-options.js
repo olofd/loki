@@ -1,7 +1,7 @@
 const path = require('path');
 const minimist = require('minimist');
 const defaults = require('./default-options');
-const { dependencyAvailable } = require('../../dependency-detection');
+const { dependencyAvailable } = require('../../utils/dependency-detection');
 
 function parseOptions(args, config) {
   const argv = minimist(args, {

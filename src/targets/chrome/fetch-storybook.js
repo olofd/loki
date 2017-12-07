@@ -1,6 +1,6 @@
 const cluster = require('cluster');
 const path = require('path');
-const { ServerError } = require('../../errors');
+const { ServerError } = require('../../utils/errors');
 
 function createError({ message, name, instructions }) {
   switch (name) {

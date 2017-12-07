@@ -1,6 +1,6 @@
 /* eslint-disable global-require, import/no-dynamic-require */
 const map = require('ramda/src/map');
-const { dependencyAvailable } = require('../dependency-detection');
+const { dependencyAvailable } = require('../utils/dependency-detection');
 const { isReactNativeProject } = require('./project-package');
 
 const mapChromeAppToDocker = map(config =>

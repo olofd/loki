@@ -1,4 +1,4 @@
-const { warn } = require('../console');
+const { warn } = require('../utils/console');
 const getDefaults = require('./get-defaults');
 const {
   getProjectPackage,

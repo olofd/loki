@@ -4,7 +4,7 @@ const fetchStorybook = require('./fetch-storybook');
 const presets = require('./presets.json');
 const disableAnimations = require('./disable-animations');
 const readyStateManager = require('./ready-state-manager');
-const { withTimeout, TimeoutError } = require('../../failure-handling');
+const { withTimeout, TimeoutError } = require('../../utils/failure-handling');
 
 function createChromeTarget(
   start,
@@ -69,9 +69,9 @@ function createChromeTarget(
 
       if (failedURLs.length !== 0) {
         const noun = failedURLs.length === 1 ? 'request' : 'requests';
-        const errorMessage = `${failedURLs.length} ${noun} failed to load; ${failedURLs.join(
-          ', '
-        )}`;
+        const errorMessage = `${failedURLs.length} ${
+          noun
+        } failed to load; ${failedURLs.join(', ')}`;
         throw new Error(errorMessage);
       }
     };
@@ -128,30 +128,31 @@ function createChromeTarget(
 
       if (result.subtype === 'error') {
         throw new Error(
-          `Unable to get position of selector "${selector}". Review the \`chromeSelector\` option and make sure your story doesn't crash.`
+          `Unable to get position of selector "${
+            selector
+          }". Review the \`chromeSelector\` option and make sure your story doesn't crash.`
         );
       }
 
       return result.value;
     };
 
-    client.captureScreenshot = withTimeout(
-      30000,
-      'captureScreenshot'
-    )(async (selector = 'body') => {
-      debug(`Getting viewport position of "${selector}"`);
-      const position = await getPositionInViewport(selector);
+    client.captureScreenshot = withTimeout(30000, 'captureScreenshot')(
+      async (selector = 'body') => {
+        debug(`Getting viewport position of "${selector}"`);
+        const position = await getPositionInViewport(selector);
 
-      debug('Capturing screenshot');
-      const clip = Object.assign({ scale: 1 }, position);
-      const screenshot = await Page.captureScreenshot({
-        format: 'png',
-        clip,
-      });
-      const buffer = new Buffer(screenshot.data, 'base64');
+        debug('Capturing screenshot');
+        const clip = Object.assign({ scale: 1 }, position);
+        const screenshot = await Page.captureScreenshot({
+          format: 'png',
+          clip,
+        });
+        const buffer = new Buffer(screenshot.data, 'base64');
 
-      return buffer;
-    });
+        return buffer;
+      }
+    );
 
     return client;
   }

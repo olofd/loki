@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const minimist = require('minimist');
-const { warn, die, info } = require('../../console');
+const { warn, die, info } = require('../../utils/console');
 const getDefaults = require('../../config/get-defaults');
 const {
   getProjectPackagePath,
@@ -19,10 +19,9 @@ const insertAfter = (
   const match = content.match(pattern);
   if (match) {
     const insertionIndex = match.index + match[0].length;
-    return `${content.substr(
-      0,
-      insertionIndex
-    )}\n${stringToInsert}${content.substr(insertionIndex)}`;
+    return `${content.substr(0, insertionIndex)}\n${
+      stringToInsert
+    }${content.substr(insertionIndex)}`;
   }
   if (fallback === 'append') {
     return `${content}\n${stringToInsert}\n`;

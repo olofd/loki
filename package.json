@@ -17,11 +17,14 @@
   ],
   "scripts": {
     "serve-docs": "gitbook serve",
-    "build-docs": "(gitbook install || (npm rebuild node-sass && gitbook install)) && gitbook build",
+    "build-docs":
+      "(gitbook install || (npm rebuild node-sass && gitbook install)) && gitbook build",
     "publish-docs": "./bin/publish-docs",
     "format": "npm run lint -- --fix",
     "lint": "eslint *.js src",
-    "test": "jest"
+    "test": "jest",
+    "link-all":
+      "rm -rf ./examples/react-native/node_modules/loki/src && wml add ./src ./examples/react-native/node_modules/loki/src && wml start"
   },
   "engines": {
     "node": ">=7.6"
@@ -93,9 +96,6 @@
     "prettier": "^1.5.3"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/examples/"
-    ]
+    "testPathIgnorePatterns": ["/node_modules/", "/examples/"]
   }
 }

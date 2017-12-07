@@ -2,7 +2,7 @@ const vm = require('vm');
 const fetchUrl = require('./fetch-url');
 const debug = require('debug')('loki:chrome:fetchStorybook');
 const getBrowserGlobals = require('./get-browser-globals');
-const { ServerError } = require('../../errors');
+const { ServerError } = require('../../utils/errors');
 
 async function createStorybookSandbox(baseUrl) {
   debug(`Fetching iframe HTML and preview bundle JS from ${baseUrl}`);
@@ -36,7 +36,9 @@ async function fetchStorybook(baseUrl = 'http://localhost:6006') {
     if (err.message && err.message.indexOf('ECONNREFUSED') !== -1) {
       throw new ServerError(
         'Failed fetching stories because the server is down',
-        `Try starting it with "yarn storybook" or pass the --port or --host arguments if it's not running at ${baseUrl}`
+        `Try starting it with "yarn storybook" or pass the --port or --host arguments if it's not running at ${
+          baseUrl
+        }`
       );
     }
     throw err;

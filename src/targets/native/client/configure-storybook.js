@@ -4,7 +4,7 @@ const storybook = require('@storybook/react-native');
 const addons = require('@storybook/addons').default;
 const ReactNative = require('react-native');
 const ExceptionsManager = require('react-native/Libraries/Core/ExceptionsManager');
-const decorateStorybook = require('../decorate-storybook');
+const decorateStorybook = require('./decorate-storybook');
 const {
   resetLoadingImages,
   awaitImagesLoaded,

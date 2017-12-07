@@ -1,1 +1,1 @@
-require('./src/targets/native/configure-storybook')();
+require('./src/targets/native/client/configure-storybook')();

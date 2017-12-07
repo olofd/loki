@@ -2,7 +2,7 @@
 
 const fs = require('fs-extra');
 const path = require('path');
-const { die } = require('../../console');
+const { die } = require('../../utils/console');
 const parseOptions = require('./parse-options');
 const getConfig = require('../../config');
 

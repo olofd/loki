@@ -1,12 +1,14 @@
 const pickBy = require('ramda/src/pickBy');
 const uniq = require('ramda/src/uniq');
 const minimist = require('minimist');
-const { warn, error, info } = require('../../console');
+const { warn, error, info } = require('../../utils/console');
 const getConfig = require('../../config');
 const parseOptions = require('./parse-options');
 const runTests = require('./run-tests');
-const { ensureDependencyAvailable } = require('../../dependency-detection');
-const { ReferenceImageError } = require('../../errors');
+const {
+  ensureDependencyAvailable,
+} = require('../../utils/dependency-detection');
+const { ReferenceImageError } = require('../../utils/errors');
 const buildCommand = require('../../build-command');
 
 const escapeRegExp = str => str.replace(/[-[\]/{}()*+?.\\^$|]/g, '\\$&');

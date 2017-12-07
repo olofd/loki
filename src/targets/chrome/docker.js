@@ -6,7 +6,9 @@ const execa = require('execa');
 const waitOn = require('wait-on');
 const CDP = require('chrome-remote-interface');
 const getRandomPort = require('get-port');
-const { ensureDependencyAvailable } = require('../../dependency-detection');
+const {
+  ensureDependencyAvailable,
+} = require('../../utils/dependency-detection');
 const createChromeTarget = require('./create-chrome-target');
 
 const getLocalIPAddress = () => {

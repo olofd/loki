@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
-const { ReferenceImageError } = require('../../errors');
+const { ReferenceImageError } = require('../../utils/errors');
 const { getImageDiffer } = require('../../diffing');
 const { slugify } = require('transliteration');
 

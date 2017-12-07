@@ -1,9 +1,9 @@
 /* eslint-disable global-require */
 
 const minimist = require('minimist');
-const { die, bold } = require('./console');
+const { die, bold } = require('./utils/console');
 const { version } = require('../package.json');
-const { MissingDependencyError, ServerError } = require('./errors');
+const { MissingDependencyError, ServerError } = require('./utils/errors');
 
 const getExecutorForCommand = command => {
   switch (command) {

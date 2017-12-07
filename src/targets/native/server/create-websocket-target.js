@@ -1,8 +1,8 @@
 const debug = require('debug')('loki:websocket');
 const WebSocket = require('ws');
 const createMessageQueue = require('./create-message-queue');
-const { NativeError } = require('../../errors');
-const { withTimeout, withRetries } = require('../../failure-handling');
+const { NativeError } = require('../../utils/errors');
+const { withTimeout, withRetries } = require('../../utils/failure-handling');
 
 const MESSAGE_PREFIX = 'loki:';
 const NATIVE_ERROR_TYPE = `${MESSAGE_PREFIX}error`;
@@ -125,8 +125,8 @@ function createWebsocketTarget(socketUri, platform, saveScreenshotToFile) {
     debug('captureScreenshotForStory', kind, story);
     send('setCurrentStory', { kind, story });
     try {
-      const data = await waitForLokiMessage('imagesLoaded', 30000);
-      debug('imagesLoaded', data);
+      const data = await waitForLokiMessage('screenshotSaved', 30000);
+      debug('screenshotSaved', data);
     } catch (error) {
       if (error instanceof NativeError) {
         lastStoryCrashed = error.isFatal;
