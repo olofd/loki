@@ -1,8 +1,8 @@
 const debug = require('debug')('loki:websocket');
 const WebSocket = require('ws');
 const createMessageQueue = require('./create-message-queue');
-const { NativeError } = require('../../utils/errors');
-const { withTimeout, withRetries } = require('../../utils/failure-handling');
+const { NativeError } = require('../../../utils/errors');
+const { withTimeout, withRetries } = require('../../../utils/failure-handling');
 
 const MESSAGE_PREFIX = 'loki:';
 const NATIVE_ERROR_TYPE = `${MESSAGE_PREFIX}error`;

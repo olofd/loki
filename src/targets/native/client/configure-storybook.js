@@ -164,7 +164,7 @@ async function configureStorybook() {
   channel.on('setCurrentStory', async () => {
     try {
       const count = await awaitImagesLoaded();
-      emit('imagesLoaded', { count });
+      emit('screenshotSaved', { count });
     } catch (error) {
       emit('error', {
         error: {

@@ -1,4 +1,4 @@
-const { NativeError } = require('../../utils/errors');
+const { NativeError } = require('../../../utils/errors');
 
 const createMessageQueue = nativeErrorType => {
   const queue = [];

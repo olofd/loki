@@ -9,7 +9,7 @@ const {
   ensureDependencyAvailable,
 } = require('../../utils/dependency-detection');
 const { ReferenceImageError } = require('../../utils/errors');
-const buildCommand = require('../../build-command');
+const buildCommand = require('../../utils/build-command');
 
 const escapeRegExp = str => str.replace(/[-[\]/{}()*+?.\\^$|]/g, '\\$&');
 

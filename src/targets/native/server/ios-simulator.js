@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 const osnap = require('osnap/src/ios');
-const { withRetries } = require('../../utils/failure-handling');
+const { withRetries } = require('../../../utils/failure-handling');
 const createWebsocketTarget = require('./create-websocket-target');
 
 const saveScreenshotToFile = withRetries(3)(async filename => {
